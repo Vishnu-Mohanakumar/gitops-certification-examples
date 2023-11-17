@@ -80,3 +80,10 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
+
+    - name: Database Directory Cleanup
+      if: always()
+      run : |
+        ls -l $RUNNER_TEMP/
+        rm -rf $RUNNER_TEMP/codeql_databases
+        ls -l $RUNNER_TEMP/
